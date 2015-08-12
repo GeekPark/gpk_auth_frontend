@@ -1,0 +1,29 @@
+{
+  "name": "gpk_auth_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config ./webpack.hot.js --hot --progress --inline --content-base assets/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GeekPark/gpk_auth_frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^5.8.20",
+    "babel-loader": "^5.3.2",
+    "jquery": "^2.1.4",
+    "react": "^0.13.3",
+    "webpack": "^1.10.5"
+  },
+  "devDependencies": {
+    "expose-loader": "^0.7.0",
+    "file-loader": "^0.8.4",
+    "react-hot-loader": "^1.2.8",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
