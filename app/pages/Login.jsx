@@ -1,7 +1,7 @@
-import $ from 'jquery';
 import React, { findDOMNode, Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/LoginActions';
+import Flash from '../components/flash';
 
 class Login extends Component {
   onLogin(e) {
@@ -31,19 +31,16 @@ class Login extends Component {
           </div>
           <a href="javascript:;" className="btn" onClick={(e) => this.onLogin(e)}>登录</a>
         </form>
+        <Flash />
       </section>
     );
   }
 }
 
-// Which props do we want to inject, given the global state?
-// Note: use https://github.com/faassen/reselect for better performance.
 function select(state) {
-  console.log(state);
   return {
     loginStatus: state.login
   };
 }
 
-// Wrap the component to inject dispatch and state into it
 export default connect(select)(Login);

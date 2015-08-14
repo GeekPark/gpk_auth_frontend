@@ -18,16 +18,22 @@ const finalCreateStore = compose(
 let gpk_auth = combineReducers(reducers);
 let store = finalCreateStore(gpk_auth);
 
+mountContainer('#page-login', Login);
 
-React.render(
-  <div>
-    <Provider store={store}>
-      {() => <Login />}
-    </Provider>
-    <DebugPanel top right bottom>
-      <DevTools store={store}
-                monitor={LogMonitor} />
-    </DebugPanel>
-  </div>
-  , $('#page-login').get()[0]
-);
+function mountContainer(dom, Component) {
+  if($(dom).length === 0) return;
+
+  React.render(
+      <div>
+        <Provider store={store}>
+          {() => <Component />}
+        </Provider>
+        <DebugPanel top right bottom>
+          <DevTools store={store}
+                    monitor={LogMonitor} />
+        </DebugPanel>
+      </div>
+
+      , $(dom).get()[0]
+  );
+}

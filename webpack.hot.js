@@ -22,8 +22,12 @@ config.plugins = [
 config.devtool = 'eval-source-map';
 
 config.module.loaders.push(
-  {test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/}
+  {test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/},
+  {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/}
 );
+
+// add style hot reload
+config.resolve.root.push(path.join(__dirname, 'assets/stylesheets'));
 
 
 module.exports = config;

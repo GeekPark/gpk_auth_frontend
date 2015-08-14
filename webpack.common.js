@@ -8,14 +8,17 @@ var config = {
     app: './app/App'
   },
   resolve: {
-    root: [ path.join(__dirname, 'app/'),],
-    extensions: ['','.webpack.js', '.web.js', '.js', '.jsx', '.styl', '.css'],
+    root: [ path.join(__dirname, 'app/')],
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.styl', '.css'],
     alias: {}
+  },
+  externals: {
+    jquery: 'jQuery'
   },
   module: {
     noParse: [],
     loaders: []
-  },
+  }
 };
 
 module.exports = config;

@@ -3,16 +3,12 @@ import $ from 'jquery';
 import config from '../server_config';
 
 const AuthManager = {
-  login(email, password, remember_me) {
+  login(user) {
     return $.ajax({
       url: config.login_url,
       dataType: 'json',
       method: 'post',
-      data: {
-        user: {
-          email, password, remember_me
-        }
-      }
+      data: { user }
     });
   }
 
