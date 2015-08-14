@@ -1,14 +1,15 @@
+const _ = require('lodash');
 const path = require('path');
 const config = require('./webpack.common');
 const webpack = require('webpack');
 
-config.entry.push(
-  'webpack-dev-server/client?http://localhost:8080',
-  'webpack/hot/only-dev-server'
-);
+_.assign(config.entry, {
+  'webpack-dev-server': 'webpack-dev-server/client?http://localhost:8080',
+  'only-dev-server': 'webpack/hot/only-dev-server'
+});
 
 config.output = {
-  filename: 'webpack-bundle.self.js',
+  filename: '[name]-bundle.self.js',
   path: __dirname,
   publicPath: 'http://localhost:8080/assets'
 };
