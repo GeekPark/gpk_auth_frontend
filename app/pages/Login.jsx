@@ -1,45 +1,62 @@
-import React, { findDOMNode, Component, PropTypes } from 'react';
+import React, { findDOMNode, Component, PropTypes, bindActionCreators } from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/LoginActions';
-import Flash from '../components/flash';
+import Flash from '../components/Flash';
+import { flashSuccess, flashError } from '../actions/MessageAction';
+
+import AuthManager from '../utils/AuthManager';
+import { getInputValue, handleError } from '../utils/ReactHelper';
 
 class Login extends Component {
   onLogin(e) {
     e.preventDefault();
-    const password = findDOMNode(this.refs.password).value;
-    const email = findDOMNode(this.refs.email).value;
-    const remember_me = findDOMNode(this.refs.remember_me).value;
-    this.props.dispatch(loginUser({ password, email, remember_me }));
+    e.stopPropagation();
+
+    const { dispatch } = this.props;
+
+    // getInputValue need read local this
+    let getValue = getInputValue.bind(this);
+
+    AuthManager.login({
+      email: getValue('email'),
+      password: getValue('password'),
+      remember_me: getValue('remember_me')
+    }).then(
+      (userInfo) => dispatch(flashSuccess('登录成功')),
+      handleError(dispatch, flashError)
+    );
+
   }
 
   render() {
+    const { flash } = this.props;
     return (
       <section className="login">
+        <Flash type={flash.type} text={flash.text} />
         <h2>登录</h2>
         <form>
           <div className="form_field">
             <label htmlFor="email">邮箱：</label>
-            <input id="email" type="text" ref="email" />
+            <input id="email" autoFocus type="text" ref="email" />
           </div>
           <div className="form_field">
             <label htmlFor="password">密码：</label>
-            <input id="password" type="text" ref="password" />
+            <input id="password" type="password" ref="password" />
           </div>
           <div className="form_field">
             <label htmlFor="remember_me">记住我：</label>
             <input id="remember_me" type="checkbox" ref="remember_me" />
           </div>
-          <a href="javascript:;" className="btn" onClick={(e) => this.onLogin(e)}>登录</a>
+          <button className="btn" onClick={(e) => this.onLogin(e)}>登录</button>
         </form>
-        <Flash />
       </section>
     );
   }
 }
 
+// bind some state to component props
 function select(state) {
   return {
-    loginStatus: state.login
+    flash: state.flash
   };
 }
 

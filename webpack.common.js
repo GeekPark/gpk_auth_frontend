@@ -4,9 +4,7 @@ const reactPath = path.join(node_modules_dir, 'react');
 
 var config = {
   context: __dirname,
-  entry: {
-    app: './app/App'
-  },
+  entry: [ './app/App' ],
   resolve: {
     root: [ path.join(__dirname, 'app/')],
     extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.styl', '.css'],

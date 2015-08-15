@@ -3,8 +3,8 @@ import React from 'react';
 import Login from 'pages/Login';
 
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, compose } from 'redux';
-import * as reducers from './reducers';
+import { createStore, compose } from 'redux';
+import reducers from './reducers';
 
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
@@ -15,8 +15,7 @@ const finalCreateStore = compose(
   createStore
 );
 
-let gpk_auth = combineReducers(reducers);
-let store = finalCreateStore(gpk_auth);
+let store = finalCreateStore(reducers);
 
 mountContainer('#page-login', Login);
 

@@ -2,10 +2,11 @@
   "name": "gpk_auth_frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server"
+    "start": "node ./server",
+    "webpack": "webpack-dev-server --config ./webpack.hot.js --hot --progress --inline --content-base assets/"
   },
   "repository": {
     "type": "git",

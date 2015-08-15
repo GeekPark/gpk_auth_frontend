@@ -1,13 +1,14 @@
 import React, { findDOMNode, Component, PropTypes } from 'react';
 
-class Flash extends Component {
+let Flash = React.createClass({
   render() {
+    const { text, type } = this.props;
     return (
-      <section className="flash">
-        Flash message123123
+      <section className={ `flash ${type}` }>
+        {text}
       </section>
     );
   }
-}
+});
 
 export default Flash;
