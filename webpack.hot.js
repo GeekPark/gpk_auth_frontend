@@ -17,7 +17,10 @@ config.output = {
 
 config.plugins = [
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin()
+  new webpack.NoErrorsPlugin(),
+  new webpack.DefinePlugin({
+    __DEV_TOOLS__: JSON.stringify(JSON.parse(process.env.DEV_TOOLS || 'false'))
+  })
 ];
 
 config.devtool = 'eval-source-map';

@@ -9,13 +9,18 @@ import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import Login from 'pages/Login';
 import reducers from './reducers';
 
+let finalCreateStore;
 
-const finalCreateStore = compose(
-  applyMiddleware(thunk),
-  devTools(),
-  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-  createStore
-);
+if(__DEV_TOOLS__) {
+  finalCreateStore = compose(
+    applyMiddleware(thunk),
+    devTools(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+    createStore
+  );
+} else {
+  finalCreateStore = applyMiddleware(thunk)(createStore);
+}
 
 let store = finalCreateStore(reducers);
 
@@ -29,10 +34,13 @@ function mountContainer(dom, Component) {
         <Provider store={store}>
           {() => <Component />}
         </Provider>
-        <DebugPanel top right bottom>
-          <DevTools store={store}
-                    monitor={LogMonitor} />
-        </DebugPanel>
+        
+        {__DEV_TOOLS__ ?
+          <DebugPanel top right bottom>
+            <DevTools store={store}
+              monitor={LogMonitor} />
+          </DebugPanel> : null
+        }
       </div>
 
       , $(dom).get()[0]

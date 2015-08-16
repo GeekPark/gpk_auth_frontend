@@ -48,6 +48,7 @@
     "$": true,
     "_": true,
     "locals": true,
-    "GeekPark": true
+    "GeekPark": true,
+    "__DEV_TOOLS__": true
   }
 }
