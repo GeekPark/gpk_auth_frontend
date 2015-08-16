@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { findDOMNode } from 'react';
+import { flashSuccess, flashError, flashHide, delayHide } from '../actions/MessageAction';
 
 // get react jsx input/select value
 export function getInputValue (refName){
@@ -13,7 +14,7 @@ export function getInputValue (refName){
   }
 }
 
-export function handleError(dispatch, flashError) {
+export function handleError(dispatch) {
   return (jqXHR) => {
     dispatch(flashError(getErrorText(jqXHR)));
   };

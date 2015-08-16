@@ -1,15 +1,17 @@
 import $ from 'jquery';
 import React from 'react';
-import Login from 'pages/Login';
-
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
-import reducers from './reducers';
-
 import { devTools, persistState } from 'redux-devtools';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
+import Login from 'pages/Login';
+import reducers from './reducers';
+
+
 const finalCreateStore = compose(
+  applyMiddleware(thunk),
   devTools(),
   persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
   createStore

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { combineReducers } from 'redux';
 
 import { LOGIN } from '../actions/LoginActions';
-import { SUCCESS_MSG, ERROR_MSG } from '../actions/MessageAction';
+import { SUCCESS_MSG, ERROR_MSG, HIDE_MSG } from '../actions/MessageAction';
 
 function loginStatus(state = {login: false}, action) {
   switch (action.type) {
@@ -17,7 +17,8 @@ function loginStatus(state = {login: false}, action) {
 
 const initialFlashState = {
   type: 'success',
-  text: '默认的消息'
+  text: '默认的消息',
+  isShow: false
 };
 
 function flashUpdate(state = initialFlashState, action) {
@@ -27,10 +28,15 @@ function flashUpdate(state = initialFlashState, action) {
     case SUCCESS_MSG:
       newState.type = 'success';
       newState.text = action.text;
+      newState.isShow = true;
       break;
     case ERROR_MSG:
       newState.type = 'error';
       newState.text = action.text;
+      newState.isShow = true;
+      break;
+    case HIDE_MSG:
+      newState.isShow = false;
       break;
   }
 

@@ -21,6 +21,7 @@
     "react": "^0.13.3",
     "react-redux": "^0.8.2",
     "redux": "^1.0.0-rc",
+    "redux-thunk": "^0.1.0",
     "webpack": "^1.10.5"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import React, { findDOMNode, Component, PropTypes, bindActionCreators } from 'react';
+
 import { connect } from 'react-redux';
 import Flash from '../components/Flash';
 import { flashSuccess, flashError } from '../actions/MessageAction';
@@ -22,16 +23,16 @@ class Login extends Component {
       remember_me: getValue('remember_me')
     }).then(
       (userInfo) => dispatch(flashSuccess('登录成功')),
-      handleError(dispatch, flashError)
+      handleError(dispatch)
     );
 
   }
 
   render() {
-    const { flash } = this.props;
+    const { flash, dispatch } = this.props;
     return (
       <section className="login">
-        <Flash type={flash.type} text={flash.text} />
+        <Flash type={flash.type} text={flash.text} isShow={flash.isShow} />
         <h2>登录</h2>
         <form>
           <div className="form_field">
