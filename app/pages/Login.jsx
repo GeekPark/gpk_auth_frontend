@@ -1,8 +1,7 @@
 import React, { findDOMNode, Component, PropTypes, bindActionCreators } from 'react';
 
 import { connect } from 'react-redux';
-import Flash from '../components/Flash';
-import { flashSuccess, flashError } from '../actions/MessageAction';
+import Flash from '../components/Flash'; import { flashSuccess, flashError } from '../actions/MessageAction';
 
 import AuthManager from '../utils/AuthManager';
 import { getInputValue, handleError } from '../utils/ReactHelper';
@@ -31,25 +30,30 @@ class Login extends Component {
   render() {
     const { flash, dispatch } = this.props;
     return (
-      <section className="login">
+      <div>
         <Flash type={flash.type} text={flash.text} isShow={flash.isShow} />
-        <h2>登录</h2>
-        <form>
-          <div className="form_field">
-            <label htmlFor="email">邮箱：</label>
-            <input id="email" autoFocus type="text" ref="email" />
+        <section className="login-wrap a-center">
+          <div className="login-switch">
+            <h4 className="switch-item on">登录</h4>
+            <h4 className="switch-item">注册</h4>
           </div>
-          <div className="form_field">
-            <label htmlFor="password">密码：</label>
-            <input id="password" type="password" ref="password" />
-          </div>
-          <div className="form_field">
-            <label htmlFor="remember_me">记住我：</label>
-            <input id="remember_me" type="checkbox" ref="remember_me" />
-          </div>
-          <button className="btn" onClick={(e) => this.onLogin(e)}>登录</button>
-        </form>
-      </section>
+          <form className="login-content">
+            <div className="form-field">
+              <label htmlFor="email">邮箱：</label>
+              <input id="email" autoFocus type="text" ref="email" />
+            </div>
+            <div className="form-field">
+              <label htmlFor="password">密码：</label>
+              <input id="password" type="password" ref="password" />
+            </div>
+            <div className="form-field">
+              <label htmlFor="remember_me">记住我：</label>
+              <input id="remember_me" type="checkbox" ref="remember_me" />
+            </div>
+            <button className="btn" onClick={(e) => this.onLogin(e)}>登录</button>
+          </form>
+        </section>
+      </div>
     );
   }
 }
