@@ -14,7 +14,10 @@ class Switch extends Component {
         Component = info.component;
         switchCont.push(<Component actions={actions} key={index} />);
       }
-      switchTitle.push(<h4 className={className} key={index}>{info.title}</h4>);
+      switchTitle.push(
+        <h4 className={className} key={index}
+          onClick={() => actions.switchPanel(info.panelKey)}
+        >{info.title}</h4>);
     });
 
     return (

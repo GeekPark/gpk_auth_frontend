@@ -6,8 +6,23 @@
   overflow: hidden;
   margin-top: -40px;
   z-index: 1;
+  min-height: 280px;
   h4 {
     margin: 0;
+  }
+  .form-field {
+    label {
+      width: 85px;
+      display: inline-block;
+      text-align: right;
+      margin-left: -50px;
+    }
+  }
+  .form-content {
+    min-height: 105px;
+  }
+  .btn {
+    margin-top: 20px;
   }
 }
 

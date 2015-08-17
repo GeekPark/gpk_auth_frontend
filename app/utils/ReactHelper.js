@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import { findDOMNode } from 'react';
-import { flashSuccess, flashError, flashHide, delayHide } from '../actions/MessageAction';
 
 // get react jsx input/select value
 export function getInputValue (refName){

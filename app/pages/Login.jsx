@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 
-import * as MessageActions from '../actions/MessageAction';
+import AuthActions from '../actions/';
 
 import { connect } from 'react-redux';
 
@@ -22,7 +22,7 @@ class Login extends Component {
     ];
 
     const { flash, dispatch, panel } = this.props;
-    const actions = bindActionCreators(MessageActions, dispatch);
+    const actions = bindActionCreators(AuthActions, dispatch);
 
     return (
       <div>

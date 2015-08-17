@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { combineReducers } from 'redux';
 
 import { LOGIN, SWITCH_PANEL } from '../actions/LoginActions';
-import { SUCCESS_MSG, ERROR_MSG, HIDE_MSG } from '../actions/MessageAction';
+import { SUCCESS_MSG, ERROR_MSG, HIDE_MSG } from '../actions/MessageActions';
 
 function loginStatus(state = {login: false}, action) {
   switch (action.type) {
@@ -51,7 +51,7 @@ function switchPanel(state = { nowPanel: 'signin' }, action) {
       newState.nowPanel = action.nowPanel;
       break;
   }
-  
+
   return newState;
 }
 

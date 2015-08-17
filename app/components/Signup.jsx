@@ -26,19 +26,21 @@ class LoginForm extends Component {
     const { actions } = this.props;
     return (
       <form>
-        <div className="form-field">
-          <label htmlFor="email">邮箱：</label>
-          <input id="email" autoFocus type="text" ref="email" />
+        <div className="form-content">
+          <div className="form-field">
+            <label htmlFor="email">邮箱：</label>
+            <input id="email" autoFocus type="text" ref="email" />
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">密码：</label>
+            <input id="password" type="password" ref="password" />
+          </div>
+          <div className="form-field">
+            <label htmlFor="password_repeat">密码重复：</label>
+            <input id="password_repeat" type="password" ref="password_repeat" />
+          </div>
         </div>
-        <div className="form-field">
-          <label htmlFor="password">密码：</label>
-          <input id="password" type="password" ref="password" />
-        </div>
-        <div className="form-field">
-          <label htmlFor="remember_me">记住我：</label>
-          <input id="remember_me" type="checkbox" ref="remember_me" />
-        </div>
-        <button className="btn" onClick={(e) => this.onLogin(e)}>登录</button>
+        <button className="btn" onClick={(e) => this.onLogin(e)}>注册</button>
       </form>
     );
   }
