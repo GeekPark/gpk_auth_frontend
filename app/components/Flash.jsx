@@ -1,6 +1,6 @@
 import React, { findDOMNode, Component, PropTypes } from 'react';
 
-let Flash = React.createClass({
+class Flash extends Component {
   render() {
     const { text, type, isShow} = this.props;
     const showStatus = isShow ? 'show' : 'notshow';
@@ -10,6 +10,6 @@ let Flash = React.createClass({
       </section>
     );
   }
-});
+}
 
 export default Flash;

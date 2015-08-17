@@ -5,7 +5,8 @@ const webpack = require('webpack');
 
 config.entry.push(
   'webpack-dev-server/client?http://localhost:8080',
-  'webpack/hot/only-dev-server'
+  'webpack/hot/only-dev-server',
+  './app/hot-sass.js'
 );
 
 config.output = {
@@ -27,7 +28,9 @@ config.devtool = 'eval-source-map';
 
 config.module.loaders.push(
   {test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/},
-  {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/}
+  {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+  {test: /\.scss$/, loader: 'style!css!sass' },
+  {test: /\.css$/, loader: 'style!css' }
 );
 
 module.exports = config;
