@@ -14,12 +14,6 @@ export function getInputValue (refName){
   }
 }
 
-export function handleError(dispatch) {
-  return (jqXHR) => {
-    dispatch(flashError(getErrorText(jqXHR)));
-  };
-}
-
 export function getErrorText(jqXHR) {
   return jqXHR && jqXHR.responseText ?
     $.parseJSON(jqXHR.responseText).error

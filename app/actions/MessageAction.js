@@ -1,5 +1,8 @@
 const DELAY_TIME = 2000;
 
+export const HIDE_MSG = 'HIDE_MSG';
+export let flashHide = ()  => ({type: HIDE_MSG});
+
 export const SUCCESS_MSG = 'SUCCESS_MSG';
 export function flashSuccess(text) {
   return dispatch => {
@@ -7,7 +10,7 @@ export function flashSuccess(text) {
       type: SUCCESS_MSG,
       text: text
     });
-    dispatch(setTimeout(() => dispatch(flashHide()), DELAY_TIME));
+    setTimeout(() => dispatch(flashHide()), DELAY_TIME);
   };
 }
 
@@ -18,9 +21,6 @@ export function flashError (text) {
       type: ERROR_MSG,
       text: text
     });
-    dispatch(setTimeout(() => dispatch(flashHide()), DELAY_TIME));
+    setTimeout(() => dispatch(flashHide()), DELAY_TIME);
   };
 }
-
-export const HIDE_MSG = 'HIDE_MSG';
-let flashHide = ()  => ({type: HIDE_MSG});

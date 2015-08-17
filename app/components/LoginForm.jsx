@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getInputValue, handleError } from '../utils/ReactHelper';
-import { flashSuccess, flashError } from '../actions/MessageAction';
+import { getInputValue, getErrorText } from '../utils/ReactHelper';
 import AuthManager from '../utils/AuthManager';
 
 class LoginForm extends Component {
@@ -8,7 +7,7 @@ class LoginForm extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    const { dispatch } = this.props;
+    const { actions } = this.props;
 
     // getInputValue need read local this
     let getValue = getInputValue.bind(this);
@@ -18,13 +17,13 @@ class LoginForm extends Component {
       password: getValue('password'),
       remember_me: getValue('remember_me')
     }).then(
-      (userInfo) => dispatch(flashSuccess('登录成功')),
-      handleError(dispatch)
+      (userInfo) => actions.flashSuccess('登录成功'),
+      (jqXHR) => actions.flashError(getErrorText(jqXHR))
     );
 
   }
   render() {
-    const { dispatch } = this.props;
+    const { actions } = this.props;
     return (
       <form>
         <div className="form-field">

@@ -34,7 +34,7 @@ function mountContainer(dom, Component) {
         <Provider store={store}>
           {() => <Component />}
         </Provider>
-        
+
         {__DEV_TOOLS__ ?
           <DebugPanel top right bottom>
             <DevTools store={store}
