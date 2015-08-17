@@ -6,28 +6,29 @@ import * as MessageActions from '../actions/MessageAction';
 import { connect } from 'react-redux';
 
 import Flash from '../components/Flash';
-import LoginForm from '../components/LoginForm';
+import Signin from '../components/Signin';
+import Signup from '../components/Signup';
+import Switch from '../components/Switch';
 
 class Login extends Component {
   render() {
-    const { flash, dispatch } = this.props;
+    const switchs = [
+      { title: '登录',
+        panelKey: 'signin',
+        component: Signin },
+      { title: '注册',
+        panelKey: 'signup',
+        component: Signup }
+    ];
+
+    const { flash, dispatch, panel } = this.props;
     const actions = bindActionCreators(MessageActions, dispatch);
 
     return (
       <div>
         <Flash type={flash.type} text={flash.text} isShow={flash.isShow} />
         <section className="login-wrap a-center">
-          <div className="login-switch">
-            <h4 className="switch-item on"
-              onClick={
-                (e) => dispatch(MessageActions.flashHide('test'))
-              }
-            >登录</h4>
-            <h4 className="switch-item">注册</h4>
-          </div>
-          <div className="login-content">
-            <LoginForm actions={ actions } />
-          </div>
+          <Switch actions={actions} switchs={switchs} panel={panel} />
         </section>
       </div>
     );
@@ -37,7 +38,8 @@ class Login extends Component {
 // bind some state to component props
 function mapStateToProps(state) {
   return {
-    flash: state.flash
+    flash: state.flash,
+    panel: state.panel.nowPanel
   };
 }
 

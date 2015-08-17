@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux';
 
-import { LOGIN } from '../actions/LoginActions';
+import { LOGIN, SWITCH_PANEL } from '../actions/LoginActions';
 import { SUCCESS_MSG, ERROR_MSG, HIDE_MSG } from '../actions/MessageAction';
 
 function loginStatus(state = {login: false}, action) {
@@ -43,8 +43,21 @@ function flashUpdate(state = initialFlashState, action) {
   return newState;
 }
 
+function switchPanel(state = { nowPanel: 'signin' }, action) {
+  let newState = _.assign({}, state);
+
+  switch (action.type) {
+    case SWITCH_PANEL:
+      newState.nowPanel = action.nowPanel;
+      break;
+  }
+  
+  return newState;
+}
+
 const rootReducer = combineReducers({
-  flash: flashUpdate
+  flash: flashUpdate,
+  panel: switchPanel
 });
 
 export default rootReducer;

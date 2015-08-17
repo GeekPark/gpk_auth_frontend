@@ -5,3 +5,6 @@ export function loginUser(user) {
     user: user
   };
 }
+
+export const SWITCH_PANEL = 'SWITCH_PANEL';
+export const switchPanel = panel => ({ type: SWITCH_PANEL, nowPanel: panel });
