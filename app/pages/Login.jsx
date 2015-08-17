@@ -23,10 +23,11 @@ class Login extends Component {
 
     const { flash, dispatch, panel } = this.props;
     const actions = bindActionCreators(AuthActions, dispatch);
+    const showFlash = flash.isShow ? <Flash type={flash.type} text={flash.text} /> : null;
 
     return (
       <div>
-        <Flash type={flash.type} text={flash.text} isShow={flash.isShow} />
+        {showFlash}
         <section className="login-wrap a-center">
           <Switch actions={actions} switchs={switchs} panel={panel} />
         </section>

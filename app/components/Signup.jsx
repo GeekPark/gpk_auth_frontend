@@ -4,9 +4,6 @@ import AuthManager from '../utils/AuthManager';
 
 class LoginForm extends Component {
   onLogin(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
     const { actions } = this.props;
 
     // getInputValue need read local this
