@@ -1,0 +1,38 @@
+.login-wrap {
+  text-align: center;
+  background-color: #fff;
+  @include global-radius;
+  border: 1px solid #cdcdcd;
+  overflow: hidden;
+  margin-top: -40px;
+  h4 {
+    margin: 0;
+  }
+}
+
+.login-switch {
+  width: 400px;
+  .switch-item {
+    background-color: #f0f0f0;
+    display: inline-block;
+    width: 50%;
+    margin-right: 0;
+    margin-left: -4px;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0;
+    transition: background-color $global-duration;
+    &.on,&:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}
+
+.login-content {
+  padding: 30px 15px;
+  .form-field {
+    margin: 8px;
+  }
+}
