@@ -24,20 +24,28 @@ const reg = {
   email: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
 };
 
+const nameHash = {
+  'email': '邮箱',
+  'password': '密码'
+};
+
+const translateName = value =>
+  _.isString(nameHash[value]) ? nameHash[value] : value;
+
 const rules = {
   'isRequire': {
     check: value => _.isEmpty(value) ? false : true,
-    message: '不能为空'
+    message: '不能为空喔！'
   },
   'email': {
     check: value => reg.email.test(value.toString()),
-    message: '不是合法的邮件地址'
+    message: '地址不对哦！'
   }
 };
 
 let checkRule = (value, rule, name, errorHandle) => {
   let result = rules[rule].check(value);
-  if(!result) errorHandle(name + rules[rule].message);
+  if(!result) errorHandle(translateName(name) + rules[rule].message);
   return result;
 };
 
