@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getInputValue, getErrorText } from '../utils/ReactHelper';
+import { getInputValue, getErrorText, validateAll } from '../utils/ReactHelper';
 import AuthManager from '../utils/AuthManager';
 
 class LoginForm extends Component {
@@ -11,6 +11,15 @@ class LoginForm extends Component {
 
     // getInputValue need read local this
     let getValue = getInputValue.bind(this);
+
+    const validateItems = [
+      { ref: 'email', rule: ['isRequire', 'email'] },
+      { ref: 'password', rule: ['isRequire'] }
+    ];
+
+    validateItems.map(ele => ele.value = getValue(ele.ref));
+
+    if(!validateAll(validateItems, actions.flashError)) return;
 
     AuthManager.login({
       email: getValue('email'),

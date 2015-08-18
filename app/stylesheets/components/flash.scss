@@ -13,7 +13,6 @@
   font-weight: bold;
   font-size: 1.1rem;
   letter-spacing: 1.5px;
-  transition: all 0.3s;
   &.error {
     background-color: #EFA5A5;
     color: #652D2D;
@@ -26,14 +25,14 @@
   }
 }
 
-.flash-enter,.flash-leave.flash-leave-active {
+.flash-enter,.flash-leave.flash-leave-active,.flash-appear {
   transform: translateY(-50%);
   opacity: 0;
 }
 
 .flash-leave,.flash-enter.flash-enter-active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0%);
 }
 
 .flash-enter.flash-enter-active,

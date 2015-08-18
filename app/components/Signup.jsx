@@ -33,7 +33,7 @@ class LoginForm extends Component {
             <input id="password" type="password" ref="password" />
           </div>
           <div className="form-field">
-            <label htmlFor="password_repeat">密码重复：</label>
+            <label htmlFor="password_repeat">验证码：</label>
             <input id="password_repeat" type="password" ref="password_repeat" />
           </div>
         </div>
