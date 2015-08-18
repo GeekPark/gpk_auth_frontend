@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
+import { addons } from 'react/addons';
+import { connect } from 'react-redux';
 
 import AuthActions from '../actions/';
-
-import { connect } from 'react-redux';
 
 import Flash from '../components/Flash';
 import Signin from '../components/Signin';
 import Signup from '../components/Signup';
 import Switch from '../components/Switch';
+
+const { CSSTransitionGroup } = addons;
 
 class Login extends Component {
   render() {
@@ -27,7 +29,9 @@ class Login extends Component {
 
     return (
       <div>
-        {showFlash}
+        <CSSTransitionGroup transitionName="flash">
+          {showFlash}
+        </CSSTransitionGroup>
         <section className="login-wrap a-center">
           <Switch actions={actions} switchs={switchs} panel={panel} />
         </section>

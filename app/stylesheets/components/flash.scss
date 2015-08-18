@@ -25,3 +25,18 @@
     border-color: #4CA25E;
   }
 }
+
+.flash-enter,.flash-leave.flash-leave-active {
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.flash-leave,.flash-enter.flash-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flash-enter.flash-enter-active,
+.flash-leave.flash-leave-active {
+  transition: all $global-duration;
+}

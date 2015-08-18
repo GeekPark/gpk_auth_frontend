@@ -6,11 +6,11 @@ body {
   background-color: #3EABEF;
 }
 
+$global-duration: .3s;
+
 @mixin global-radius() {
   border-radius: 3px;
 }
-
-$global-duration: .3s;
 
 .a-center {
   position: absolute;
@@ -31,6 +31,10 @@ $global-duration: .3s;
   &:focus {
     border-color: #66afe9;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  }
+  &[type="password"] {
+    -webkit-text-security: disc;
+    letter-spacing: 5px;
   }
 }
 

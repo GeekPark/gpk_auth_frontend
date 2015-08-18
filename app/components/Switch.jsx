@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import addons from 'react/addons';
+import { addons } from 'react/addons';
 
-let ReactCSSTransitionGroup = addons.addons.CSSTransitionGroup;
+const { CSSTransitionGroup } = addons;
 
 class Switch extends Component {
   render() {
@@ -33,9 +33,9 @@ class Switch extends Component {
             {switchTitle}
           </div>
           <div className="login-content">
-            <ReactCSSTransitionGroup transitionName="switch-anim">
+            <CSSTransitionGroup transitionName="switch-anim">
               {switchCont}
-            </ReactCSSTransitionGroup>
+            </CSSTransitionGroup>
           </div>
       </div>
     );

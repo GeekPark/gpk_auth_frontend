@@ -63,24 +63,17 @@
   }
 }
 
-.switch-anim-enter {
+.switch-anim-enter,.switch-anim-leave.switch-anim-leave-active {
   transform: scaleX(0);
   opacity: 0;
 }
 
-.switch-anim-enter.switch-anim-enter-active {
-  transform: scaleX(1);
-  opacity: 1;
-  transition: all $global-duration;
-}
-
-.switch-anim-leave {
+.switch-anim-leave,.switch-anim-enter.switch-anim-enter-active {
   opacity: 1;
   transform: scaleX(1);
 }
 
+.switch-anim-enter.switch-anim-enter-active,
 .switch-anim-leave.switch-anim-leave-active {
-  opacity: 0;
-  transform: scaleX(0);
   transition: all $global-duration;
 }
