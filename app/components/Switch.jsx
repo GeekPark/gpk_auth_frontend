@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import addons from 'react/addons';
+
+let ReactCSSTransitionGroup = addons.addons.CSSTransitionGroup;
 
 class Switch extends Component {
   render() {
@@ -8,11 +11,15 @@ class Switch extends Component {
     switchs.forEach((info, index) => {
       let isShow = info.panelKey === panel;
       let className = 'switch-item';
-      let Component = null;
+      let Component;
       if(isShow) {
         className += ' on';
         Component = info.component;
-        switchCont.push(<Component actions={actions} key={index} />);
+        switchCont.push(
+          <div className="switch-cont-item" key={index} >
+            <Component actions={actions}/>
+          </div>
+        );
       }
       switchTitle.push(
         <h4 className={className} key={index}
@@ -26,7 +33,9 @@ class Switch extends Component {
             {switchTitle}
           </div>
           <div className="login-content">
-            {switchCont}
+            <ReactCSSTransitionGroup transitionName="switch-anim">
+              {switchCont}
+            </ReactCSSTransitionGroup>
           </div>
       </div>
     );

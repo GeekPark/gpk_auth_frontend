@@ -31,24 +31,56 @@
   .switch-item {
     background-color: #f0f0f0;
     display: inline-block;
+    margin: 0;
     width: 50%;
     margin-right: 0;
-    margin-left: -4px;
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
-    margin: 0;
     transition: background-color $global-duration;
-    &.on,&:hover {
+    &:hover {
+      background-color: #d0d0d0;
+    }
+    &.on {
       background-color: #e0e0e0;
     }
   }
 }
 
 .login-content {
-  padding: 30px 15px;
+  position: relative;
+  padding-top: 20px;
   .form-field {
     margin: 8px;
   }
+  .switch-cont-item {
+    position: absolute;
+    margin: auto;
+    width: 80%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.switch-anim-enter {
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.switch-anim-enter.switch-anim-enter-active {
+  transform: scaleX(1);
+  opacity: 1;
+  transition: all $global-duration;
+}
+
+.switch-anim-leave {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.switch-anim-leave.switch-anim-leave-active {
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all $global-duration;
 }
