@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
-import { getInputValue, getErrorText } from '../utils/ReactHelper';
+import { getInputValue, getErrorText, validateAll } from '../utils/ReactHelper';
 import AuthManager from '../utils/AuthManager';
 
 class LoginForm extends Component {
   onLogin(e) {
+    e.preventDefault();
+    e.stopPropagation();
     const { actions } = this.props;
 
     // getInputValue need read local this
     let getValue = getInputValue.bind(this);
 
-    AuthManager.login({
+    const validateItems = [
+      { ref: 'email', rule: ['isRequire', 'email'] },
+      { ref: 'password', rule: ['isRequire'] }
+    ];
+
+    validateItems.map(ele => ele.value = getValue(ele.ref));
+
+    if(!validateAll(validateItems, actions.flashError)) return;
+
+
+    AuthManager.signup({
       email: getValue('email'),
       password: getValue('password'),
-      remember_me: getValue('remember_me')
+      password_repeat: getValue('password')
     }).then(
-      (userInfo) => actions.flashSuccess('登录成功'),
+      (userInfo) => actions.flashSuccess('注册成功'),
       (jqXHR) => actions.flashError(getErrorText(jqXHR))
     );
 

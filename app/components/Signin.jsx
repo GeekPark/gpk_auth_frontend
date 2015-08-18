@@ -21,7 +21,7 @@ class LoginForm extends Component {
 
     if(!validateAll(validateItems, actions.flashError)) return;
 
-    AuthManager.login({
+    AuthManager.signin({
       email: getValue('email'),
       password: getValue('password'),
       remember_me: getValue('remember_me')
