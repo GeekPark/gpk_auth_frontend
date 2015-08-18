@@ -1,19 +1,7 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux';
 
-import { LOGIN, SWITCH_PANEL } from '../actions/LoginActions';
-import { SUCCESS_MSG, ERROR_MSG, HIDE_MSG } from '../actions/MessageActions';
-
-function loginStatus(state = {login: false}, action) {
-  switch (action.type) {
-    case LOGIN:
-      // todo: change something
-      return _.assign({}, state);
-
-    default:
-      return state;
-  }
-}
+import * as TYPE from '../actions/ActionTypes';
 
 const initialFlashState = {
   type: 'success',
@@ -25,17 +13,17 @@ function flashUpdate(state = initialFlashState, action) {
   let newState = _.assign({}, state);
 
   switch (action.type) {
-    case SUCCESS_MSG:
+    case TYPE.SUCCESS_MSG:
       newState.type = 'success';
       newState.text = action.text;
       newState.isShow = true;
       break;
-    case ERROR_MSG:
+    case TYPE.ERROR_MSG:
       newState.type = 'error';
       newState.text = action.text;
       newState.isShow = true;
       break;
-    case HIDE_MSG:
+    case TYPE.HIDE_MSG:
       newState.isShow = false;
       break;
   }
@@ -47,7 +35,7 @@ function switchPanel(state = { nowPanel: 'signin' }, action) {
   let newState = _.assign({}, state);
 
   switch (action.type) {
-    case SWITCH_PANEL:
+    case TYPE.SWITCH_PANEL:
       newState.nowPanel = action.nowPanel;
       break;
   }

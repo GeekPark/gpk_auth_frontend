@@ -4,9 +4,9 @@ class Flash extends Component {
   render() {
     const { text, type, isShow} = this.props;
     return (
-        <section className={ `flash ${type}` }>
-          {text}
-        </section>
+      <section className={ `flash ${type}` }>
+        {text}
+      </section>
     );
   }
 }

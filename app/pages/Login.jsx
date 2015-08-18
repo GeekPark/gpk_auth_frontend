@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { addons } from 'react/addons';
 import { connect } from 'react-redux';
 
-import AuthActions from '../actions/';
+import * as AuthActions from '../actions/ActionCreators';
 
 import Flash from '../components/Flash';
 import Signin from '../components/Signin';
