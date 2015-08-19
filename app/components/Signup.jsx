@@ -11,20 +11,20 @@ class LoginForm extends Component {
     // getInputValue need read local this
     let getValue = getInputValue.bind(this);
 
-    const validateItems = [
+    let validateItems = [
       { ref: 'email', rule: ['isRequire', 'email'] },
-      { ref: 'password', rule: ['isRequire'] }
+      { ref: 'password', rule: ['isRequire'] },
+      { ref: 'captcha', rule: ['isRequire'] }
     ];
 
     validateItems.map(ele => ele.value = getValue(ele.ref));
 
     if(!validateAll(validateItems, actions.flashError)) return;
 
-
     AuthManager.signup({
       email: getValue('email'),
       password: getValue('password'),
-      password_repeat: getValue('password')
+      captcha: getValue('captcha')
     }).then(
       (userInfo) => actions.flashSuccess('注册成功'),
       (jqXHR) => actions.flashError(getErrorText(jqXHR))
@@ -44,9 +44,10 @@ class LoginForm extends Component {
             <label htmlFor="password">密码：</label>
             <input id="password" type="password" ref="password" />
           </div>
-          <div className="form-field">
-            <label htmlFor="password_repeat">验证码：</label>
-            <input id="password_repeat" type="password" ref="password_repeat" />
+          <div className="form-field captcha">
+            <label htmlFor="captcha">验证码：</label>
+            <input id="captcha" type="text" maxLength="4" ref="captcha" />
+            <img src="/captcha" alt="验证码" width="80" height="27" className="captcha-img" />
           </div>
         </div>
         <button className="btn" onClick={(e) => this.onLogin(e)}>注册</button>

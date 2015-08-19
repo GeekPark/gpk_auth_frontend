@@ -12,7 +12,7 @@ class LoginForm extends Component {
     // getInputValue need read local this
     let getValue = getInputValue.bind(this);
 
-    const validateItems = [
+    let validateItems = [
       { ref: 'email', rule: ['isRequire', 'email'] },
       { ref: 'password', rule: ['isRequire'] }
     ];
