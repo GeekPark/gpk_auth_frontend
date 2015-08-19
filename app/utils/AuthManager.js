@@ -1,11 +1,11 @@
 import $ from 'jquery';
 
-import config from '../server_config';
+import CONFIG from '../server_config';
 
 const AuthManager = {
   signin(user) {
     return $.ajax({
-      url: config.signin_url,
+      url: CONFIG.SIGNIN_URL,
       dataType: 'json',
       method: 'post',
       data: { user }
@@ -14,7 +14,7 @@ const AuthManager = {
 
   signup(user) {
     return $.ajax({
-      url: config.signup_url,
+      url: CONFIG.SIGNUP_URL,
       dataType: 'json',
       method: 'post',
       data: { user }

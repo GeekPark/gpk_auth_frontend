@@ -1,6 +1,7 @@
 const config = {
-  signin_url: '/login',
-  signup_url: '/signup'
+  SIGNIN_URL: '/login',
+  SIGNUP_URL: '/signup',
+  CAPTCHA_URL: '/captcha'
 };
 
 export default config;
