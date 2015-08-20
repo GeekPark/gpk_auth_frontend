@@ -57,3 +57,5 @@ export function validateAll(items, errorHandle) {
     });
   });
 }
+
+export const changeHash = newHash => window.location.hash = newHash;

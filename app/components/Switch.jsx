@@ -1,9 +1,32 @@
 import React, { Component } from 'react';
 import { addons } from 'react/addons';
+import { changeHash } from '../utils/ReactHelper';
 
 const { CSSTransitionGroup } = addons;
 
 class Switch extends Component {
+  switchHash(key) {
+    let nowHash = window.location.hash;
+    let newHash;
+    if(nowHash.length) {
+      // panel key define in Login.jsx
+      if (/signin|signup/.test(nowHash)) {
+        newHash = nowHash.replace(/signin|signup/, key);
+      } else {
+        newHash = nowHash + '&' + key;
+      }
+    } else {
+      newHash = '#' + key;
+    }
+    changeHash(newHash);
+  }
+
+  componentWillMount() {
+    // 页面载入时根据 URL HASH 切换对应的面板
+    let nowPanel = window.location.hash.match(/signup|signin/);
+    if(nowPanel) this.props.actions.switchPanel(nowPanel[0]);
+  }
+
   render() {
     let switchCont = [], switchTitle = [];
     const { panel, switchs, actions  } = this.props;
@@ -23,7 +46,10 @@ class Switch extends Component {
       }
       switchTitle.push(
         <h4 className={className} key={index}
-          onClick={() => actions.switchPanel(info.panelKey)}
+          onClick={(e) => {
+            actions.switchPanel(info.panelKey);
+            this.switchHash(info.panelKey);
+          }}
         >{info.title}</h4>);
     });
 
