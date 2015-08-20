@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getInputValue, getErrorText, validateAll } from '../utils/ReactHelper';
 import AuthManager from '../utils/AuthManager';
+import { goPage } from '../utils/ReactHelper';
 import CONFIG from '../server_config';
 
 class LoginForm extends Component {
@@ -27,7 +28,10 @@ class LoginForm extends Component {
       password: getValue('password'),
       captcha: getValue('captcha')
     }).then(
-      (userInfo) => actions.flashSuccess('注册成功'),
+      (userInfo) => {
+        actions.flashSuccess('注册成功');
+        setTimeout(() => goPage(CONFIG.INFO_URL), 2000);
+      },
       (jqXHR) => actions.flashError(getErrorText(jqXHR))
     );
 

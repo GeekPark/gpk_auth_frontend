@@ -83,3 +83,7 @@ export function validateAll(items, errorHandle) {
 }
 
 export const changeHash = newHash => window.location.hash = newHash;
+
+export const reload = (isForce = true) => window.location.reload(isForce);
+
+export const goPage = path => window.location.href = path;
