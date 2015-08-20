@@ -2,24 +2,6 @@ import $ from 'jquery';
 import _ from 'lodash';
 import { findDOMNode } from 'react';
 
-// get react jsx input/select value
-export function getInputValue (refName){
-  let dom = findDOMNode(this.refs[refName]);
-  // note: if <select> should return value
-  switch(dom.type) {
-    case 'checkbox':
-      return dom.checked;
-    default:
-      return dom.value.trim();
-  }
-}
-
-export function getErrorText(jqXHR) {
-  return jqXHR && jqXHR.responseText ?
-    $.parseJSON(jqXHR.responseText).error
-    : 'ops 发生了未知的错误 ...';
-}
-
 const reg = {
   email: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
 };
@@ -33,6 +15,44 @@ const nameHash = {
 const translateName = value =>
   _.isString(nameHash[value]) ? nameHash[value] : value;
 
+// get react jsx input/select value
+export function getInputValue (refName){
+  let dom = findDOMNode(this.refs[refName]);
+  // note: if <select> should return value
+  switch(dom.type) {
+    case 'checkbox':
+      return dom.checked;
+    default:
+      return dom.value.trim();
+  }
+}
+
+export function getErrorText(jqXHR) {
+  if(jqXHR && jqXHR.responseText) {
+    let res;
+    try {
+      res = $.parseJSON(jqXHR.responseText);
+    }
+    catch (e) {
+      return '无法解析的返回错误，请检查服务器端 ...';
+    }
+
+    // expand all error when received a error array
+    if(res.errors) {
+      return _.reduce(res.errors, (result, current, key) => {
+        return result + ' ' + translateName(key) + _.reduce(
+          current,
+          (itemResult, itemCurrent) => itemResult + itemCurrent + ' ',
+          '');
+      }, '');
+    }
+
+    if(res.error) return res.error;
+  } else {
+    return 'ops 发生了未知的错误 ...';
+  }
+}
+
 const rules = {
   'isRequire': {
     check: value => _.isEmpty(value) ? false : true,
@@ -41,6 +61,10 @@ const rules = {
   'email': {
     check: value => reg.email.test(value.toString()),
     message: '地址不对哦！'
+  },
+  'minLength': {
+    check: value => value.length >= 6,
+    message: '太短啦！'
   }
 };
 

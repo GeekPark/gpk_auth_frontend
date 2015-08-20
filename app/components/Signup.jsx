@@ -14,7 +14,7 @@ class LoginForm extends Component {
 
     let validateItems = [
       { ref: 'email', rule: ['isRequire', 'email'] },
-      { ref: 'password', rule: ['isRequire'] },
+      { ref: 'password', rule: ['isRequire', 'minLength'] },
       { ref: 'captcha', rule: ['isRequire'] }
     ];
 
