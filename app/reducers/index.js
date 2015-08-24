@@ -9,6 +9,7 @@ const initialFlashState = {
   isShow: false
 };
 
+
 function flashUpdate(state = initialFlashState, action) {
   let newState = _.assign({}, state);
 
@@ -31,6 +32,27 @@ function flashUpdate(state = initialFlashState, action) {
   return newState;
 }
 
+const initialModalState = {
+  type: 'colse',
+  content: 'Contents',
+  title: 'Title'
+};
+
+function modalUpdate(state = initialModalState, action) {
+  let newState = _.assign({}, state);
+  switch (action.type) {
+    case TYPE.OPEN_MODAL:
+      newState.type = 'open';
+      newState.title = action.title;
+      newState.contentPath = action.contentPath;
+      break;
+    case TYPE.CLOSE_MODAL:
+      newState.type = 'colse';
+  }
+  return newState;
+}
+
+
 function switchPanel(state = { nowPanel: 'signin' }, action) {
   let newState = _.assign({}, state);
 
@@ -45,7 +67,8 @@ function switchPanel(state = { nowPanel: 'signin' }, action) {
 
 const rootReducer = combineReducers({
   flash: flashUpdate,
-  panel: switchPanel
+  panel: switchPanel,
+  modal: modalUpdate
 });
 
 export default rootReducer;
