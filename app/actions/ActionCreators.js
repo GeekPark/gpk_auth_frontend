@@ -4,6 +4,7 @@ const DELAY_TIME = 2000;
 export let flashHide = ()  =>
   ({type: TYPE.HIDE_MSG});
 
+
 export function flashSuccess(text) {
   return dispatch => {
     dispatch({
@@ -23,6 +24,12 @@ export function flashError (text) {
     setTimeout(() => dispatch(flashHide()), DELAY_TIME);
   };
 }
+
+export const openModal = (title, path) =>
+  ({type: TYPE.OPEN_MODAL, title: title, contentPath: path});
+
+export const closeModal = () =>
+  ({type: TYPE.CLOSE_MODAL});
 
 export const switchPanel = panel =>
   ({ type: TYPE.SWITCH_PANEL, nowPanel: panel });

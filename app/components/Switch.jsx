@@ -20,7 +20,6 @@ class Switch extends Component {
     }
     changeHash(newHash);
   }
-
   componentWillMount() {
     // 页面载入时根据 URL HASH 切换对应的面板
     let nowPanel = window.location.hash.match(/signup|signin/);
