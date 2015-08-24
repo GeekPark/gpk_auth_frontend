@@ -68,7 +68,7 @@ const rules = {
   }
 };
 
-let checkRule = (value, rule, name, errorHandle) => {
+const checkRule = (value, rule, name, errorHandle) => {
   let result = rules[rule].check(value);
   if(!result) errorHandle(translateName(name) + rules[rule].message);
   return result;
