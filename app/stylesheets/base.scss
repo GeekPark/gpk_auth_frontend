@@ -1,3 +1,21 @@
+$global-duration: .3s;
+
+@mixin global-radius() {
+  border-radius: 3px;
+}
+
+$image-url-path: '/assets/' !default;
+
+// sass helper, fix image path in webpack and rails assets pipeline
+// using img-url to import image assets instead using url() or image-url()
+@function img-url($image) {
+  @if variable-exists(rails) {
+    @return image-url($image);
+  } @else {
+    @return url('#{$image-url-path}#{$image}');
+  }
+}
+
 body {
   font-family: Arial,"DIN Next Ultra Light","Helvetica Neue",Helvetica, "Lantinghei SC","Hiragino Sans GB",STHeiti, "Noto Sans S Chinese", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei",sans-serif;
   font-size: 16px;
@@ -6,11 +24,6 @@ body {
   background-color: #3EABEF;
 }
 
-$global-duration: .3s;
-
-@mixin global-radius() {
-  border-radius: 3px;
-}
 
 .a-center {
   position: absolute;

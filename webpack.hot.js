@@ -29,7 +29,7 @@ config.devtool = 'eval-source-map';
 config.module.loaders.push(
   {test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/},
   {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
-  {test: /\.scss$/, loader: 'style!css!sass' },
+  {test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded&imagePath=/app/images' },
   {test: /\.css$/, loader: 'style!css' }
 );
 
