@@ -32,9 +32,10 @@ function flashUpdate(state = initialFlashState, action) {
   return newState;
 }
 
+//modal reducer
 const initialModalState = {
   type: 'colse',
-  content: 'Contents',
+  contentPath: 'ContentsPath',
   title: 'Title'
 };
 
@@ -51,6 +52,24 @@ function modalUpdate(state = initialModalState, action) {
   }
   return newState;
 }
+//modal reducer end
+
+
+//info reducer
+const initialInfoState = {
+  nowContent: 'personal'
+};
+function switchInfo(state = initialInfoState, action){
+  let newState = _.assign({}, state);
+
+  switch (action.type){
+    case TYPE.SWITCH_INFO:
+      newState.nowContent = action.nowContent;
+      break;
+  }
+  return newState;
+}
+//info reducer end
 
 
 function switchPanel(state = { nowPanel: 'signin' }, action) {
@@ -65,10 +84,12 @@ function switchPanel(state = { nowPanel: 'signin' }, action) {
   return newState;
 }
 
+
 const rootReducer = combineReducers({
   flash: flashUpdate,
   panel: switchPanel,
-  modal: modalUpdate
+  modal: modalUpdate,
+  info: switchInfo
 });
 
 export default rootReducer;

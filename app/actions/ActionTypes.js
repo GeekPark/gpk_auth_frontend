@@ -6,3 +6,5 @@ export const ERROR_MSG = 'ERROR_MSG';
 
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const SWITCH_INFO = 'SWITCH_INFO';

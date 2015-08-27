@@ -1,0 +1,41 @@
+.setting{
+  padding: 10px 20px;
+  button{
+    background-color: #009FED;
+    border: none;
+    color: #FFF;
+    padding: 5px 25px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover{
+      background-color: #39B0EA;
+      transition: all 0.3s ease;
+    }
+  }
+  .label{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+  }
+  input{
+    height: 30px;
+    width: 200px;
+    margin-left: 8px;
+    border: 1px solid #E0E0E0;
+    padding-left: 3px;
+  }
+  .form-item{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+  }
+  .form-password, .form-email{
+    margin-bottom: 20px;
+  }
+  .input-text{
+    margin-bottom: 15px;
+  }
+  .change{
+    margin-left: 20px;
+  }
+}

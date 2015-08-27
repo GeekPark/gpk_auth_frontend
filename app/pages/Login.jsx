@@ -26,7 +26,7 @@ class Login extends Component {
     const { flash, dispatch, panel, modal } = this.props;
     const actions = bindActionCreators(AuthActions, dispatch);
     const showFlash = flash.isShow ? <Flash type={flash.type} text={flash.text} /> : null;
-    const showModal = modal.type === 'open' ? <Modal type={modal.type} title={modal.title} contentPath={modal.contentPath} actions={actions}/> : null
+    const showModal = modal.type === 'open' ? <Modal type={modal.type} title={modal.title} contentPath={modal.contentPath} actions={actions}/> : null;
     return (
       <div>
         <CSSTransitionGroup transitionName="flash">
@@ -35,7 +35,7 @@ class Login extends Component {
         <CSSTransitionGroup transitionName="modal">
           {showModal}
         </CSSTransitionGroup>
-        <button className="open-modal" onClick={()=> actions.openModal('Title', "./ModalContent")} >Open Modal</button>
+        <button className="open-modal" onClick={()=> actions.openModal('Title', './ModalContent')} >Open Modal</button>
         <section className="login-wrap a-center">
           <Switch actions={actions} switchs={switchs} panel={panel} />
         </section>

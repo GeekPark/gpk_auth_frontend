@@ -21,7 +21,7 @@ body {
   font-size: 16px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  background-color: #3EABEF;
+  background-color: #FFF;
 }
 
 
@@ -68,7 +68,16 @@ body {
   }
 }
 
+.info-main{
+  padding-left: 230px;
+  background-color: #fff;
+  min-height: 100vh;
+}
 
 @import 'components/flash';
 @import 'components/modal';
 @import 'components/login';
+@import 'components/slidebar';
+@import 'components/topbar';
+@import 'components/personal';
+@import 'components/setting';
