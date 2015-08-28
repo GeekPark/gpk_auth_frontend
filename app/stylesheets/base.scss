@@ -73,7 +73,24 @@ body {
   background-color: #fff;
   min-height: 100vh;
 }
+.button{
+  border: none;
+  color: #FFF;
+  padding: 5px 25px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  &:hover{
+    transition: all 0.3s ease;
+  }
+}
+.blue{
+  background-color: #009FED;
+  &:hover{
+    background-color: #39B0EA;
+  }
+}
 
+@import 'components/icon';
 @import 'components/flash';
 @import 'components/modal';
 @import 'components/login';

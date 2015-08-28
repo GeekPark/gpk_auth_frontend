@@ -19,8 +19,12 @@ export class SwitchNav extends Component {
     const { actions, switchs, panel } = this.props;
     var navList = switchs.map((item, index) => {
       let className = 'switch-item';
+      let icon = {};
       if(item.panelKey === panel){
         className += ' active';
+      }
+      if(item.icon){
+        icon = <span className={ 'ic ' + item.icon }></span>;
       }
       return (
         <a href="javascript:;" className={className} key={index}
@@ -28,7 +32,7 @@ export class SwitchNav extends Component {
               actions.switchInfo(item.panelKey);
               this.switchHash(item.panelKey);
             }}
-        >{item.title}</a>
+        >{icon}{item.title}</a>
       );
     });
 

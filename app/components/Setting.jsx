@@ -10,7 +10,7 @@ class Setting extends Component {
             <div className="label">更换邮箱:</div>
             <div className="form-item">
               <input type="text"/>
-              <button className="change" type="submit">更换</button>
+              <button className="button blue change" type="submit">更换</button>
             </div>
           </form>
         </div>
@@ -27,12 +27,26 @@ class Setting extends Component {
               <div className="input-text">
                 <input id="password_confirmation" name="password_confirmation" type="text" placeholder="重复密码"/>
               </div>
-              <button className="submit" type="submit">更改</button>
+              <button className="button blue submit" type="submit">更改</button>
             </div>
           </form>
         </div>
         <h4>第三方帐号绑定</h4>
         <p>绑定后即可通过第三方网站登录极客公园，同时也可以将第三网站的头像同步过来，方便快捷。</p>
+        <div className="bind">
+          <a href="javascript:;" className="item bind-wechat">
+            <span className="ic ic-wechat small"></span>
+            <span>绑定微信帐号</span>
+          </a>
+          <a href="javascript:;" className="item bind-qq">
+            <span className="ic ic-qq small"></span>
+            <span>绑定微信帐号</span>
+          </a>
+          <a href="javascript:;" className="item bind-weibo on">
+            <span className="ic ic-weibo small"></span>
+            <span>绑定微博帐号</span>
+          </a>
+        </div>
       </div>
     );
   }

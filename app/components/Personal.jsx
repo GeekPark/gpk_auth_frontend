@@ -24,7 +24,7 @@ class Personal extends Component {
               <textarea id="bio" name="bio" type="text"></textarea>
             </div>
           </div>
-          <button type="submit">提交</button>
+          <button className="button blue" type="submit">提交</button>
         </form>
       </div>
     );

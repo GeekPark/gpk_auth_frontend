@@ -71,7 +71,6 @@ function switchInfo(state = initialInfoState, action){
 }
 //info reducer end
 
-
 function switchPanel(state = { nowPanel: 'signin' }, action) {
   let newState = _.assign({}, state);
 

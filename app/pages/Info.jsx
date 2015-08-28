@@ -17,9 +17,11 @@ class Info extends Component {
   render() {
     const switchs = [
       { title: '个人信息',
+        icon: 'ic-personal',
         panelKey: 'personal',
         component: Personal },
       { title: '帐号设置',
+        icon: 'ic-setting',
         panelKey: 'setting',
         component: Setting }
     ];
