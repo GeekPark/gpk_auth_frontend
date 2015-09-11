@@ -1,0 +1,45 @@
+@mixin icon-index($width, $height, $x, $y, $zoom) {
+  width: $width * $zoom;
+  height: $height * $zoom;
+  background-position-x: -($x * $zoom);
+  background-position-y: -($y * $zoom);
+  background-size: (760px * $zoom) (700px * $zoom);
+}
+
+.ic{
+  background: img-url("icons.svg") no-repeat;
+  display: inline-block;
+}
+
+@mixin icon-share($index, $zoom) {
+  @include icon-index(40px, 40px, $index * 50px, 100px, $zoom);
+}
+
+
+
+$ic-list: wechat, weibo, facebook, twitter, zhihu, qq;
+$index: 0;
+$zoom: 1;
+$zoom-small: 0.8;
+@each $item in $ic-list {
+  .ic-#{$item}{
+    @include icon-share($index, $zoom);
+  }
+  .ic-#{$item}.small{
+    @include icon-share($index, $zoom-small);
+  }
+  $index: $index + 1;
+}
+
+.ic-personal{
+  @include icon-index(30px, 30px, 0, 50px, 0.9);
+}
+.ic-setting{
+  @include icon-index(30px, 30px, 50px, 50px, 0.9);
+}
+.ic-editor{
+  @include icon-index(20px, 20px, 300px, 0px, 0.8);
+}
+.ic-user{
+  @include icon-index(32px, 32px, 200px, 0px, 0.8);
+}

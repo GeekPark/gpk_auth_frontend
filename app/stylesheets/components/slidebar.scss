@@ -1,0 +1,48 @@
+.slidebar{
+  background-color: #588299;
+  width: 230px;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left: 0;
+  .geek-logo{
+    display: block;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    img{
+      width: 100%;
+    }
+  }
+  .nav{
+    a{
+      display: block;
+      color: #fff;
+      background-color: rgba(109,170,202,0.37);
+      line-height: 2.5;
+      text-align: center;
+      text-decoration: none;
+      border-bottom: 1px solid #588299;
+      transition: all 0.5s ease;
+      &:hover{
+        background-color: rgba(109,170,202,1);
+        transition: all 0.5s ease;
+      }
+      .ic{
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+    }
+    a.active{
+      background-color: #6DAACA;
+    }
+  }
+  .copyright{
+    width: 100%;
+    color:#fff;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom:10px;
+    text-align: center;
+  }
+}

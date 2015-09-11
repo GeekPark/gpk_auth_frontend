@@ -1,0 +1,121 @@
+
+.topbar{
+  padding: 20px;
+  background-color: #FDFDFD;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  .user{
+  height: 60px;
+  }
+  .user-fav{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+    position: relative;
+    img{
+      width: 100%;
+      border-radius: 100%;
+    }
+    .fav-bg{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      border-radius: 100%;
+      opacity: 0;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+    .fav-editor{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      z-index: 11;
+      transition: opacity 0.3s ease;
+    }
+    &:hover{
+      .fav-bg{
+        opacity: .4;
+        transition: opacity 0.3s ease;
+      }
+      .fav-editor{
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+  .user-box{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    .save-btn{
+      background-color: #009FED;
+      color: #fff;
+      margin-left: 5px;
+      padding: 2px 8px;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    input{
+      color: #8E8E8E;
+      padding-left: 3px;
+      margin-right: 5px;
+    }
+    label{
+      margin-right: 3px;
+    }
+    .user-name{
+      font-size: .9rem;
+      margin-bottom: 3px;
+      .name{
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      &:hover{
+        .ic-editor{
+          display: inline-block;
+        }
+      }
+    }
+    .ic-editor{
+      margin-left: 5px;
+      vertical-align: top;
+      display: none;
+    }
+    .user-intro{
+      font-size: .9rem;
+      span{
+        margin-right: 10px;
+      }
+      &:hover{
+        .ic-editor{
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .user-blog{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:10px;
+    .ic.on{
+      background-position-y: -100px * $zoom;
+    }
+    .ic{
+      margin-right: 8px;
+      background-position-y: -150px * $zoom;
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
+  .hidden{
+    display: none;
+  }
+}

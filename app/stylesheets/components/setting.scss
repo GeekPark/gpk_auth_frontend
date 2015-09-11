@@ -1,0 +1,70 @@
+.setting{
+  padding: 10px 20px;
+  .label{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+  }
+  input{
+    height: 30px;
+    width: 200px;
+    margin-left: 8px;
+    border: 1px solid #E0E0E0;
+    padding-left: 3px;
+    border-radius: 3px;
+  }
+  .form-item{
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+  }
+  .form-password, .form-email{
+    margin-bottom: 20px;
+  }
+  .input-text{
+    margin-bottom: 15px;
+  }
+  .change{
+    margin-left: 20px;
+  }
+  .bind{
+    .item{
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #eee;
+      margin-right: 25px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      span{
+        vertical-align: middle;
+      }
+      .ic{
+        margin-right: 8px;
+        background-position-y: -150px * $zoom-small;
+        transition: all 0.3s ease;
+      }
+    }
+    @mixin bind-hover($color) {
+      color:#fff;
+      background-color: $color;
+      transition: all 0.3s ease;
+      .ic{
+        background-position-y: -200px * $zoom-small;
+        transition: all 0.3s ease;
+      }
+    }
+    .bind-wechat:hover,.bind-wechat.on{
+      @include bind-hover(#8DC81B);
+    }
+    .bind-qq:hover,.bind-qq.on{
+      @include bind-hover(#73AEE5);
+    }
+    .bind-weibo:hover,.bind-weibo.on{
+      @include bind-hover(#C83A3D);
+    }
+
+  }
+}

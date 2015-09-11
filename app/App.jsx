@@ -7,6 +7,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 import Login from 'pages/Login';
+import Info from 'pages/Info';
 import reducers from './reducers';
 
 let finalCreateStore;
@@ -24,7 +25,13 @@ if(__DEV_TOOLS__) {
 
 let store = finalCreateStore(reducers);
 
+
+// let unsubscribe = store.subscribe(() =>
+//   console.log(store.getState())
+// );
+
 mountContainer('#page-login', Login);
+mountContainer('#page-info', Info);
 
 function mountContainer(dom, Component) {
   if($(dom).length === 0) return;

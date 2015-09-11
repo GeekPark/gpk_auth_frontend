@@ -33,3 +33,6 @@ export const closeModal = () =>
 
 export const switchPanel = panel =>
   ({ type: TYPE.SWITCH_PANEL, nowPanel: panel });
+
+export const switchInfo = content =>
+  ({ type: TYPE.SWITCH_INFO, nowContent: content });
