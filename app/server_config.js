@@ -1,8 +1,9 @@
 const config = {
-  SIGNIN_URL: '/login',
-  SIGNUP_URL: '/signup',
+  SIGNIN_URL: '/user/sign_in',
+  SIGNUP_URL: '/user/registrations',
   CAPTCHA_URL: '/captcha',
-  INFO_URL: '/info'
+  INFO_URL: '/user/edit',
+  LOGOUT_URL: '/user/logout'
 };
 
 export default config;

@@ -8,7 +8,7 @@ const AuthManager = {
       url: CONFIG.SIGNIN_URL,
       dataType: 'json',
       method: 'post',
-      data: { user }
+      data: user
     });
   },
 
@@ -17,7 +17,7 @@ const AuthManager = {
       url: CONFIG.SIGNUP_URL,
       dataType: 'json',
       method: 'post',
-      data: { user }
+      data: user
     });
   }
 
