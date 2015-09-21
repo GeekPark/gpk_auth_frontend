@@ -35,6 +35,7 @@ class Login extends Component {
         <CSSTransitionGroup transitionName="modal">
           {showModal}
         </CSSTransitionGroup>
+        <a href="#/info"> go info panel </a>
         <button className="open-modal" onClick={()=> actions.openModal('Title', './ModalContent')} >Open Modal</button>
         <section className="login-wrap a-center">
           <Switch actions={actions} switchs={switchs} panel={panel} />

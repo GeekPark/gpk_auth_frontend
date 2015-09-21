@@ -1,9 +1,11 @@
 import $ from 'jquery';
+import _ from 'lodash';
 import React from 'react';
 import thunk from 'redux-thunk';
+import { Router } from 'director';
 import { Provider } from 'react-redux';
 import { devTools, persistState } from 'redux-devtools';
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 import Login from 'pages/Login';
@@ -23,25 +25,36 @@ if(__DEV_TOOLS__) {
   finalCreateStore = applyMiddleware(thunk)(createStore);
 }
 
-let store = finalCreateStore(reducers);
+const store = finalCreateStore(reducers);
 
+const mountPage = _.partial(mountContainer, '#app');
 
-// let unsubscribe = store.subscribe(() =>
-//   console.log(store.getState())
-// );
+let router = Router({
+  '/': mountPage(Login)
+});
 
-mountContainer('#page-login', Login);
-mountContainer('#page-info', Info);
+router.init();
+
+const routes = {
+  '/info': Info
+};
+
+_.forIn(routes, (value, key) => {
+  router.on(key, function () {
+    mountPage(value);
+  });
+});
+
 
 function mountContainer(dom, Component) {
   if($(dom).length === 0) return;
+  console.log('mount route');
 
   React.render(
       <div>
         <Provider store={store}>
           {() => <Component />}
         </Provider>
-
         {__DEV_TOOLS__ ?
           <DebugPanel top right bottom>
             <DevTools store={store}
